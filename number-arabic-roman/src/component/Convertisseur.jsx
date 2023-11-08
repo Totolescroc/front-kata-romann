@@ -6,6 +6,9 @@ function Convertisseur() {
   const [conversionInverse, setConversionInverse] = useState(false);
 
   const handleChange = (e) => {
+ 
+    e.target.value = e.target.value.toUpperCase();
+  
     setChiffreArabe(e.target.value);
   };
 
@@ -24,7 +27,7 @@ function Convertisseur() {
       if (!response.ok) {
         throw new Error('Erreur lors de la conversion.');
       }
-
+      
       const data = await response.json();
       const resultat = conversionInverse ? data.arabic : data.roman;
 
@@ -35,7 +38,7 @@ function Convertisseur() {
       }
     } catch (error) {
       console.error(error);
-      setChiffreRomain('Erreur de conversion');
+      setChiffreRomain("Chiffres non valide");
     }
   };
 
@@ -57,7 +60,10 @@ function Convertisseur() {
           value={chiffreArabe}
           maxLength={5}
           minLength={1}
+          autoCapitalize='on'
           onChange={handleChange}
+          
+
         />
         <button onClick={convertirChiffre}>{conversionInverse ? 'Convertir en Chiffre Arabe' : 'Convertir en Chiffre Romain'}</button>
         <label htmlFor="chiffreRomain">{conversionInverse ? 'Chiffre Arabe correspondant :' : 'Chiffre Romain correspondant :'}</label>
