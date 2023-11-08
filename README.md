@@ -37,4 +37,5 @@ Mise en ligne de l'application React sur une plateforme d'hébergement statique 
 Configuration des liens entre l'application frontend et l'API backend.
 
 **Étape 6 : Validation**
+
 Test de l'application en ligne pour vérifier qu'elle fonctionne correctement sur Internet.
