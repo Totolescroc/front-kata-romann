@@ -39,3 +39,8 @@ Configuration des liens entre l'application frontend et l'API backend.
 **Étape 6 : Validation**
 
 Test de l'application en ligne pour vérifier qu'elle fonctionne correctement sur Internet.
+
+**Back logs :**
+
+Mise en place d'une procédure d'automatisation des tests (intégration continue)
+Évolutions possibles
