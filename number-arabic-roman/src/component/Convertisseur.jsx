@@ -34,18 +34,21 @@ function Convertisseur() {
 
   return (
     <div>
-      <h1>Convertisseur Chiffre Arabe en Chiffre Romain</h1>
-      <label htmlFor="chiffreArabe">Entrez un chiffre arabe :</label>
-      <input
-        type="number"
-        id="chiffreArabe"
-        placeholder="Entrez un chiffre arabe"
-        value={chiffreArabe}
-        onChange={handleChange}
-      />
-      <button onClick={convertirChiffre}>Convertir</button>
-      <label htmlFor="chiffreRomain">Chiffre Romain correspondant :</label>
-      <input type="text" id="chiffreRomain" value={chiffreRomain} readOnly />
+      <div className='container'>
+
+        <h1>Convertisseur Chiffre Arabe en Chiffre Romain</h1>
+        <label htmlFor="chiffreArabe">Entrez un chiffre entre 1 et 3999 :</label>
+        <input
+          type="number"
+          id="chiffreArabe"
+          placeholder="Entrez un chiffre arabe"
+          value={chiffreArabe}
+          onChange={handleChange}
+          />
+        <button onClick={convertirChiffre}>Convertir</button>
+        <label htmlFor="chiffreRomain">Chiffre Romain correspondant :</label>
+        <input type="text" id="chiffreRomain" value={chiffreRomain} readOnly />
+      </div>
     </div>
   );
 }
