@@ -55,6 +55,8 @@ function Convertisseur() {
           id="chiffreArabe"
           placeholder={conversionInverse ? 'Entrez un chiffre romain' : 'Entrez un chiffre arabe'}
           value={chiffreArabe}
+          maxLength={5}
+          minLength={1}
           onChange={handleChange}
         />
         <button onClick={convertirChiffre}>{conversionInverse ? 'Convertir en Chiffre Arabe' : 'Convertir en Chiffre Romain'}</button>
