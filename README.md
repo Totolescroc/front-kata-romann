@@ -29,6 +29,7 @@ Mise en place de tests unitaires Jest pour les composants React.
 **Étape 4 : Tests Locaux**
 
 Exécution de tests locaux pour s'assurer que l'API et l'application fonctionnent correctement sur l'environnement de développement.
+Pour lancer les tests en local : npx jest test
 
 **Étape 5 : Déploiement**
 
