@@ -15,9 +15,16 @@ function Convertisseur() {
   // Effectue la conversion en fonction du mode sélectionné
   const convertirChiffre = async () => {
     try {
+      // Cherche dans l'historique pour une entrée correspondante
+      const historiqueEntry = historique.find(entry => entry.input === chiffreArabe);
+  
+      // Si une entrée est trouvée dans l'historique, utilisez-la et évitez l'appel API
+      if (historiqueEntry) {
+        setChiffreRomain(historiqueEntry.output);
+        return; // Stoppe l'exécution de la fonction ici
+      }
+  
       let resultat;
-      let response;
-      let data;
       let url = 'https://arab-to-roman-114f70a02b4f.herokuapp.com/';
   
       // Choisis l'URL en fonction du sens de la conversion
@@ -27,8 +34,7 @@ function Convertisseur() {
         url += 'convert'; // Endpoint pour convertir de l'arabe au romain
       }
   
-      
-      response = await fetch(url, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,14 +46,12 @@ function Convertisseur() {
         throw new Error('Erreur lors de la conversion.');
       }
   
-      data = await response.json();
-  
-      // Résultat en fonction du sens de la conversion
+      const data = await response.json();
       resultat = conversionInverse ? data.arabic : data.roman;
   
       setChiffreRomain(resultat.toString());
   
-      // Ajout de la nouvelle conversion à l'historique
+      // Ajoute la nouvelle conversion à l'historique
       setHistorique((prevHistorique) => [
         { input: chiffreArabe, output: resultat.toString() },
         ...prevHistorique.slice(0, 4),
@@ -57,6 +61,7 @@ function Convertisseur() {
       setChiffreRomain('Chiffre non valide');
     }
   };
+  
   
 
   // Bascule entre les modes de conversion
@@ -82,7 +87,7 @@ function Convertisseur() {
         <label htmlFor="chiffreRomain">{conversionInverse ? 'Chiffre Arabe correspondant :' : 'Chiffre Romain correspondant :'}</label>
         <input type="text" id="chiffreRomain" value={chiffreRomain} readOnly />
         <button onClick={toggleConversion}>Changer de mode</button>
-        {historique.length > 0 && (
+        {/* {historique.length > 0 && (
           <div>
             <h2>Historique des conversions</h2>
             <ul>
@@ -91,7 +96,7 @@ function Convertisseur() {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
