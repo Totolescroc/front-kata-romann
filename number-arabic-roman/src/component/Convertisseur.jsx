@@ -52,10 +52,10 @@ function Convertisseur() {
       setChiffreRomain(resultat.toString());
   
       // Ajoute la nouvelle conversion à l'historique
-      // setHistorique((prevHistorique) => [
-      //   { input: chiffreArabe, output: resultat.toString() },
-      //   ...prevHistorique.slice(0, 4),
-      // ]);
+      setHistorique((prevHistorique) => [
+        { input: chiffreArabe, output: resultat.toString() },
+        ...prevHistorique.slice(0, 4),
+      ]);
     } catch (error) {
       console.error(error);
       setChiffreRomain('Chiffre non valide');
