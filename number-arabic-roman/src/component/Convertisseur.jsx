@@ -20,14 +20,14 @@ function Convertisseur() {
       let data;
       let url = 'https://arab-to-roman-114f70a02b4f.herokuapp.com/';
   
-      // Choisissez l'URL en fonction du sens de la conversion
+      // Choisis l'URL en fonction du sens de la conversion
       if (conversionInverse) {
         url += 'reverse'; // Endpoint pour convertir du romain à l'arabe
       } else {
         url += 'convert'; // Endpoint pour convertir de l'arabe au romain
       }
   
-      // Envoyez une requête POST avec un corps JSON pour les deux cas
+      
       response = await fetch(url, {
         method: 'POST',
         headers: {
@@ -42,13 +42,12 @@ function Convertisseur() {
   
       data = await response.json();
   
-      // Obtenez le résultat en fonction du sens de la conversion
+      // Résultat en fonction du sens de la conversion
       resultat = conversionInverse ? data.arabic : data.roman;
   
-      // Mise à jour de l'état avec le résultat de la conversion
       setChiffreRomain(resultat.toString());
   
-      // Ajoutez la nouvelle conversion à l'historique
+      // Ajout de la nouvelle conversion à l'historique
       setHistorique((prevHistorique) => [
         { input: chiffreArabe, output: resultat.toString() },
         ...prevHistorique.slice(0, 4),
@@ -83,14 +82,16 @@ function Convertisseur() {
         <label htmlFor="chiffreRomain">{conversionInverse ? 'Chiffre Arabe correspondant :' : 'Chiffre Romain correspondant :'}</label>
         <input type="text" id="chiffreRomain" value={chiffreRomain} readOnly />
         <button onClick={toggleConversion}>Changer de mode</button>
-        <div>
-          <h2>Historique des conversions</h2>
-          <ul>
-            {historique.map((entree, index) => (
-              <li key={index}>{`Entrée: ${entree.input}, Sortie: ${entree.output}`}</li>
-            ))}
-          </ul>
-        </div>
+        {historique.length > 0 && (
+          <div>
+            <h2>Historique des conversions</h2>
+            <ul>
+              {historique.map((entree, index) => (
+                <li key={index}>{`Entrée: ${entree.input}, Sortie: ${entree.output}`}</li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );
