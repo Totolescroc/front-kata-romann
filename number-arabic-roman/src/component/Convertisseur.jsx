@@ -4,7 +4,7 @@ function Convertisseur() {
   const [chiffreArabe, setChiffreArabe] = useState('');
   const [chiffreRomain, setChiffreRomain] = useState('');
   const [conversionInverse, setConversionInverse] = useState(false);
-  const [historique, setHistorique] = useState([]); // État pour stocker l'historique des conversions
+  const [historique, setHistorique] = useState([]);
 
   // Gère les changements d'entrée pour les chiffres arabes et romains
   const handleChange = (e) => {
@@ -15,13 +15,13 @@ function Convertisseur() {
   // Effectue la conversion en fonction du mode sélectionné
   const convertirChiffre = async () => {
     try {
-      // Cherche dans l'historique pour une entrée correspondante
+      // Cherche dans l'historique
       const historiqueEntry = historique.find(entry => entry.input === chiffreArabe);
   
-      // Si une entrée est trouvée dans l'historique, utilisez-la et évitez l'appel API
+      // evite l'appel API
       if (historiqueEntry) {
         setChiffreRomain(historiqueEntry.output);
-        return; // Stoppe l'exécution de la fonction ici
+        return;
       }
   
       let resultat;
@@ -52,10 +52,10 @@ function Convertisseur() {
       setChiffreRomain(resultat.toString());
   
       // Ajoute la nouvelle conversion à l'historique
-      setHistorique((prevHistorique) => [
-        { input: chiffreArabe, output: resultat.toString() },
-        ...prevHistorique.slice(0, 4),
-      ]);
+      // setHistorique((prevHistorique) => [
+      //   { input: chiffreArabe, output: resultat.toString() },
+      //   ...prevHistorique.slice(0, 4),
+      // ]);
     } catch (error) {
       console.error(error);
       setChiffreRomain('Chiffre non valide');
@@ -87,6 +87,8 @@ function Convertisseur() {
         <label htmlFor="chiffreRomain">{conversionInverse ? 'Chiffre Arabe correspondant :' : 'Chiffre Romain correspondant :'}</label>
         <input type="text" id="chiffreRomain" value={chiffreRomain} readOnly />
         <button onClick={toggleConversion}>Changer de mode</button>
+
+        {/* historique */}
         {/* {historique.length > 0 && (
           <div>
             <h2>Historique des conversions</h2>
