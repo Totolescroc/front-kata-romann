@@ -26,10 +26,14 @@ Intégration de la communication avec l'API backend via des requêtes HTTP.
 Gestion des erreurs et affichage de messages d'erreur en cas de problème de conversion.
 Mise en place de tests unitaires Jest pour les composants React.
 
+- Nouvelle fonctionnalité, possibilité de convertir un chiffre romain en chiffre arabe, grâce à un bouton.
+- Nouvelle fonctionnalité, route permettant aux externes de profité de la première fonctionnalité (arab to roman) via un call API. (https://arab-to-roman-114f70a02b4f.herokuapp.com/getRomanValue/ + le nombre).
+- Nouvelle fonctionnalité, mise en place d'un travaux répertoriant les conversions précédentes.
+
 **Étape 4 : Tests Locaux**
 
 Exécution de tests locaux pour s'assurer que l'API et l'application fonctionnent correctement sur l'environnement de développement.
-Pour lancer les tests en local : npx jest test
+Pour lancer les tests en local : 'npm run test' et 'npm run testreverse'.
 
 **Étape 5 : Déploiement**
 
@@ -43,5 +47,5 @@ Test de l'application en ligne pour vérifier qu'elle fonctionne correctement su
 
 **Back logs :**
 
-Mise en place d'une procédure d'automatisation des tests (intégration continue)
+Mise en place d'une procédure d'automatisation des tests (intégration continue) via github Actions (down pour le moment)
 Évolutions possibles
